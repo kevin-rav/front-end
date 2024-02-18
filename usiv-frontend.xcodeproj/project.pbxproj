@@ -24,7 +24,6 @@
 		0A18BF0C2B7DFE9900DF186B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A18BF0B2B7DFE9900DF186B /* User.swift */; };
 		0A18BF0E2B7E00C100DF186B /* PostedRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A18BF0D2B7E00C100DF186B /* PostedRequestsViewModel.swift */; };
 		0A18BF102B7E02EC00DF186B /* AcceptedRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A18BF0F2B7E02EC00DF186B /* AcceptedRequestsViewModel.swift */; };
-		0A2CADED2B805092001879AA /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2CADEC2B805092001879AA /* BackgroundView.swift */; };
 		0AD3B0392B80425B0023EC73 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD3B0382B80425B0023EC73 /* PopupView */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +47,6 @@
 		0A18BF0B2B7DFE9900DF186B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0A18BF0D2B7E00C100DF186B /* PostedRequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedRequestsViewModel.swift; sourceTree = "<group>"; };
 		0A18BF0F2B7E02EC00DF186B /* AcceptedRequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedRequestsViewModel.swift; sourceTree = "<group>"; };
-		0A2CADEC2B805092001879AA /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +109,6 @@
 				0A11B4992B7DD9DB00198E3E /* AvailableRequestsView.swift */,
 				0A11B49B2B7DDA0500198E3E /* PostedRequestsView.swift */,
 				0A11B49D2B7DDA2E00198E3E /* AcceptedRequestsView.swift */,
-				0A2CADEC2B805092001879AA /* BackgroundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,7 +230,6 @@
 				0A18BF0E2B7E00C100DF186B /* PostedRequestsViewModel.swift in Sources */,
 				0A11B4A62B7DDD1F00198E3E /* LinkToDatabase.swift in Sources */,
 				0A18BF102B7E02EC00DF186B /* AcceptedRequestsViewModel.swift in Sources */,
-				0A2CADED2B805092001879AA /* BackgroundView.swift in Sources */,
 				0A11B49A2B7DD9DB00198E3E /* AvailableRequestsView.swift in Sources */,
 				0A11B49C2B7DDA0500198E3E /* PostedRequestsView.swift in Sources */,
 				0A18BF0C2B7DFE9900DF186B /* User.swift in Sources */,

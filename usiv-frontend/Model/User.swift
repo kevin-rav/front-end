@@ -9,4 +9,5 @@ import SwiftUI
 
 struct User: Identifiable, Codable {
     var id: UUID
+    var role: Int
 }

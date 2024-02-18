@@ -8,5 +8,5 @@
 import Foundation
 
 struct LinkToDatabase {
-    static var link = "https://8339-2620-0-1a10-7802-87dc-2fdb-188e-890c.ngrok-free.app"
+    static var link = "https://8ff0-2620-0-1a10-7802-8d41-c68d-622c-fec2.ngrok-free.app"
 }
