@@ -12,12 +12,34 @@ class PostedRequestsViewModel: ObservableObject {
     @Published var password: String
     @Published var requests: [USIVRequest] = []
     
-    // initialize variables
-    init(username: String, password: String) {
-        self.username = username
-        self.password = password
-        fetchUserPostedRequests()
-    }
+    private var timer: Timer?
+       // initialize variables
+       init(username: String, password: String) {
+           self.username = username
+           self.password = password
+           startAutomaticRefresh()
+       }
+       
+       deinit {
+           stopAutomaticRefresh()
+       }
+       
+       // Start automatic refresh
+       private func startAutomaticRefresh() {
+           // Invalidate existing timer if any
+           timer?.invalidate()
+           
+           // Create a new timer that fires every second
+           timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+               self?.fetchUserPostedRequests()
+           }
+       }
+       
+       // Stop automatic refresh
+       private func stopAutomaticRefresh() {
+           timer?.invalidate()
+           timer = nil
+       }
     
     // fetches all requests posted by user
     func fetchUserPostedRequests() {
