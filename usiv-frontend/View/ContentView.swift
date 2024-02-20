@@ -15,11 +15,6 @@ struct ContentView: View {
                 // Show PostedRequestsView if the user is a Requester (role == 0)
                 if viewModel.role == 0 {
                     PostedRequestsView(viewModel: PostedRequestsViewModel(username: viewModel.username, password: viewModel.password))
-                        .tabItem {
-                            Image(systemName: "plus")
-                            Text("Posted")
-                        }
-                        .tag(1)
                 }
 
                 // Show AvailableRequestsView and AcceptedRequestsView if the user is a Responder (role == 1)
