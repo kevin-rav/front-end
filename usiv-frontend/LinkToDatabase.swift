@@ -8,5 +8,6 @@
 import Foundation
 
 struct LinkToDatabase {
-    static var link = "https://8ff0-2620-0-1a10-7802-8d41-c68d-622c-fec2.ngrok-free.app"
+    static var link = "http://127.0.0.1:8080"
+    static var wslink = "ws://127.0.0.1:8080/"
 }

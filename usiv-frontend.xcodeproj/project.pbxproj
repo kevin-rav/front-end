@@ -25,6 +25,7 @@
 		0A18BF0E2B7E00C100DF186B /* PostedRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A18BF0D2B7E00C100DF186B /* PostedRequestsViewModel.swift */; };
 		0A18BF102B7E02EC00DF186B /* AcceptedRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A18BF0F2B7E02EC00DF186B /* AcceptedRequestsViewModel.swift */; };
 		0AD3B0392B80425B0023EC73 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD3B0382B80425B0023EC73 /* PopupView */; };
+		8DAC4EB32B83E60600DC502A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC4EB22B83E60600DC502A /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		0A18BF0B2B7DFE9900DF186B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0A18BF0D2B7E00C100DF186B /* PostedRequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedRequestsViewModel.swift; sourceTree = "<group>"; };
 		0A18BF0F2B7E02EC00DF186B /* AcceptedRequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedRequestsViewModel.swift; sourceTree = "<group>"; };
+		8DAC4EB22B83E60600DC502A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				0A11B4992B7DD9DB00198E3E /* AvailableRequestsView.swift */,
 				0A11B49B2B7DDA0500198E3E /* PostedRequestsView.swift */,
 				0A11B49D2B7DDA2E00198E3E /* AcceptedRequestsView.swift */,
+				8DAC4EB22B83E60600DC502A /* ChatView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				0A11B4952B7DD83900198E3E /* LoginView.swift in Sources */,
 				0A11B4882B7DD79F00198E3E /* ContentView.swift in Sources */,
 				0A11B4862B7DD79F00198E3E /* usiv_frontendApp.swift in Sources */,
+				8DAC4EB32B83E60600DC502A /* ChatView.swift in Sources */,
 				0A18BF0A2B7DF75000DF186B /* USIVRequest.swift in Sources */,
 				0A11B49E2B7DDA2E00198E3E /* AcceptedRequestsView.swift in Sources */,
 				0A18BF072B7DF69C00DF186B /* AvailableRequestsViewModel.swift in Sources */,
