@@ -19,7 +19,7 @@ struct PostedRequestsView: View {
     @State private var notes = ""
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color(red: 167/255, green: 177/255, blue: 178/255, opacity: 1.5), // Red with opacity
                                                             // Green with opacity
@@ -68,7 +68,17 @@ struct PostedRequestsView: View {
                                             .background(Color(red: 186/255, green: 12/255, blue: 47/255))
                                             .cornerRadius(5)
                                         }
-                                    
+
+                                        // Button to view the chat
+                                        NavigationLink(destination: ChatView(requestID: request.id, userName: viewModel.username)) {
+                                            Text("Chat")
+                                                .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
+                                                .foregroundColor(.white)
+                                                .padding()
+                                                .background(Color(red: 186/255, green: 12/255, blue: 47/255))
+                                                .cornerRadius(5)
+                                        }
+                            
                                     }
                                     
                                     Text("Notes: \(request.notes)\nStatus: \(statusText(for: request.status))")
@@ -83,7 +93,7 @@ struct PostedRequestsView: View {
                                 .padding(.horizontal, 20)
                                 .padding(.bottom, 10)
                             }
-
+                            
                         }
                         .frame(height: 500)
                         .padding(.bottom, 20)
@@ -105,74 +115,74 @@ struct PostedRequestsView: View {
             }
         }
         .navigationBarBackButtonHidden(true) // Hide the back button
-            .popup(isPresented: $showingCreateRequestPopup) {
-                VStack {
-                    Text("CREATE REQUEST")
-                        .font(Font.custom("BuckeyeSerif2-SemiBold", size: 30))
+        .popup(isPresented: $showingCreateRequestPopup) {
+            VStack {
+                Text("CREATE REQUEST")
+                    .font(Font.custom("BuckeyeSerif2-SemiBold", size: 30))
+                    .foregroundColor(.white)
+                    .opacity(0.7)
+                    .padding(.bottom, 10)
+                
+                TextField("Hospital", text: $hospital)
+                    .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
+                    .padding()
+                    .background(Color(red: 167/255, green: 177/255, blue: 178/255))
+                    .cornerRadius(5)
+                    .padding(.horizontal)
+                
+                TextField("Room Number", text: $roomNumber)
+                    .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
+                    .padding()
+                    .background(Color(red: 167/255, green: 177/255, blue: 178/255))
+                    .cornerRadius(5)
+                    .padding(.horizontal)
+                    .keyboardType(.numberPad)
+                
+                TextField("Callback Number", text: $callbackNumber)
+                    .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
+                    .padding()
+                    .background(Color(red: 167/255, green: 177/255, blue: 178/255))
+                    .cornerRadius(5)
+                    .padding(.horizontal)
+                    .keyboardType(.phonePad)
+                
+                TextField("Notes", text: $notes)
+                    .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
+                    .padding()
+                    .background(Color(red: 167/255, green: 177/255, blue: 178/255))
+                    .cornerRadius(5)
+                    .padding(.horizontal)
+                
+                Button(action: {
+                    viewModel.createRequest(hospital: hospital, roomNumber: Int(roomNumber) ?? 0, callbackNumber: callbackNumber, notes: notes)
+                    
+                    showingCreateRequestPopup = false
+                    hospital = ""
+                    roomNumber = ""
+                    callbackNumber = ""
+                    notes = ""
+                    
+                }) {
+                    Text("Create")
+                        .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
                         .foregroundColor(.white)
-                        .opacity(0.7)
-                        .padding(.bottom, 10)
-                    
-                    TextField("Hospital", text: $hospital)
-                        .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
                         .padding()
-                        .background(Color(red: 167/255, green: 177/255, blue: 178/255))
-                        .cornerRadius(5)
+                        .background(Color(red: 186/255, green: 12/255, blue: 47/255))
+                        .cornerRadius(15.0)
                         .padding(.horizontal)
-                    
-                    TextField("Room Number", text: $roomNumber)
-                        .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
-                        .padding()
-                        .background(Color(red: 167/255, green: 177/255, blue: 178/255))
-                        .cornerRadius(5)
-                        .padding(.horizontal)
-                        .keyboardType(.numberPad)
-                    
-                    TextField("Callback Number", text: $callbackNumber)
-                        .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
-                        .padding()
-                        .background(Color(red: 167/255, green: 177/255, blue: 178/255))
-                        .cornerRadius(5)
-                        .padding(.horizontal)
-                        .keyboardType(.phonePad)
-                    
-                    TextField("Notes", text: $notes)
-                        .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
-                        .padding()
-                        .background(Color(red: 167/255, green: 177/255, blue: 178/255))
-                        .cornerRadius(5)
-                        .padding(.horizontal)
-                    
-                    Button(action: {
-                        viewModel.createRequest(hospital: hospital, roomNumber: Int(roomNumber) ?? 0, callbackNumber: callbackNumber, notes: notes)
-                        
-                        showingCreateRequestPopup = false
-                        hospital = ""
-                        roomNumber = ""
-                        callbackNumber = ""
-                        notes = ""
-                        
-                    }) {
-                        Text("Create")
-                            .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color(red: 186/255, green: 12/255, blue: 47/255))
-                            .cornerRadius(15.0)
-                            .padding(.horizontal)
-                            .frame(maxWidth: .infinity)
-                    }
+                        .frame(maxWidth: .infinity)
                 }
-                .padding()
-                .frame(maxWidth: 360)
-                .frame(minHeight: 400)
-                .background(Color(red: 77/255, green: 77/255, blue: 77/255))
-                .cornerRadius(20)
-            } customize: {
-                $0.useKeyboardSafeArea(true)
-                    .closeOnTap(false)
-                    .dragToDismiss(true)
             }
+            .padding()
+            .frame(maxWidth: 360)
+            .frame(minHeight: 400)
+            .background(Color(red: 77/255, green: 77/255, blue: 77/255))
+            .cornerRadius(20)
+        } customize: {
+            $0.useKeyboardSafeArea(true)
+                .closeOnTap(false)
+                .dragToDismiss(true)
+        }
     }
     
     func statusText(for status: Int) -> String {
@@ -189,6 +199,4 @@ struct PostedRequestsView: View {
             return "Unknown"
         }
     }
-
 }
-

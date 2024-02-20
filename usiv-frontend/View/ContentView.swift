@@ -17,7 +17,9 @@ struct ContentView: View {
                     PostedRequestsView(viewModel: PostedRequestsViewModel(username: viewModel.username, password: viewModel.password))
                         .tabItem {
                             Image(systemName: "plus")
+                                .foregroundColor(Color(red: 186/255, green: 12/255, blue: 47/255))
                             Text("Posted")
+                                .foregroundColor(Color(red: 186/255, green: 12/255, blue: 47/255))
                         }
                         .tag(1)
                 }
@@ -46,6 +48,7 @@ struct ContentView: View {
                         showingHelpPopup.toggle()
                     }) {
                         Image(systemName: "questionmark.circle")
+                            .foregroundColor(Color(red: 186/255, green: 12/255, blue: 47/255))
                     }
                     .padding(.horizontal) // Add some padding to the button
                 }
@@ -55,6 +58,7 @@ struct ContentView: View {
                         viewModel.logout()
                     }) {
                         Text("Logout")
+                        .foregroundColor(Color(red: 186/255, green: 12/255, blue: 47/255))
                     }
                 }
             }
