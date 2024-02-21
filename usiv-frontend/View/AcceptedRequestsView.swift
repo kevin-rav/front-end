@@ -11,7 +11,7 @@ struct AcceptedRequestsView: View {
     @StateObject var viewModel: AcceptedRequestsViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color(red: 167/255, green: 177/255, blue: 178/255, opacity: 1.5), // Red with opacity
                                                             // Green with opacity
@@ -60,6 +60,16 @@ struct AcceptedRequestsView: View {
                                             .padding()
                                             .background(Color(red: 186/255, green: 12/255, blue: 47/255))
                                             .cornerRadius(5)
+                                            
+                                            // Button to view the chat
+                                            NavigationLink(destination: ChatView(requestID: request.id, userName: viewModel.username)) {
+                                                Text("Chat")
+                                                    .font(Font.custom("BuckeyeSerif2-SemiBold", size: 16))
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                                    .background(Color(red: 186/255, green: 12/255, blue: 47/255))
+                                                    .cornerRadius(5)
+                                            }
                                         }
                                     }
                                 }
