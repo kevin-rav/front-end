@@ -12,11 +12,34 @@ class PostedRequestsViewModel: ObservableObject {
     @Published var password: String
     @Published var requests: [USIVRequest] = []
     
+    private var timer: Timer?
+    
     // initialize variables
     init(username: String, password: String) {
         self.username = username
         self.password = password
-        fetchUserPostedRequests()
+        startAutomaticRefresh()
+    }
+    
+    deinit {
+        stopAutomaticRefresh()
+    }
+    
+    // Start automatic refresh
+    private func startAutomaticRefresh() {
+        // Invalidate existing timer if any
+        timer?.invalidate()
+        
+        // Create a new timer that fires every second
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.fetchUserPostedRequests()
+        }
+    }
+    
+    // Stop automatic refresh
+    private func stopAutomaticRefresh() {
+        timer?.invalidate()
+        timer = nil
     }
     
     // fetches all requests posted by user
@@ -195,9 +218,45 @@ class PostedRequestsViewModel: ObservableObject {
                 return
             }
             
+            self.triggerNotification()
+            
             // Handle response
             // This closure is executed when the request completes
             self.fetchUserPostedRequests()
+        }.resume()
+    }
+    
+    func triggerNotification() {
+        guard let url = URL(string: "\(LinkToDatabase.link)/requests/sendNotificationToResponders") else {
+            print("Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // Add Basic Authentication
+        let loginString = "\(username):\(password)"
+        guard let loginData = loginString.data(using: .utf8) else {
+            print("Error encoding login credentials")
+            return
+        }
+        let base64LoginString = loginData.base64EncodedString()
+        request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+        
+        // Handle Errors
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error triggering notification: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Invalid response")
+                return
+            }
+            
+            print("Notification triggered with status code: \(httpResponse.statusCode)")
         }.resume()
     }
 }

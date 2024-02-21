@@ -68,7 +68,6 @@ struct PostedRequestsView: View {
                                             .background(Color(red: 186/255, green: 12/255, blue: 47/255))
                                             .cornerRadius(5)
                                         }
-
                                         // Button to view the chat
                                         NavigationLink(destination: ChatView(requestID: request.id, userName: viewModel.username)) {
                                             Text("Chat")
