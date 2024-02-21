@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 class LoginViewModel: ObservableObject {
     // Login properties
@@ -16,6 +17,7 @@ class LoginViewModel: ObservableObject {
     // Errors
     @Published var loginError = false
     @Published var registerError = false
+
     
     // allow users to login
     func authenticateUser(completion: @escaping (Bool) -> Void) {
@@ -62,7 +64,7 @@ class LoginViewModel: ObservableObject {
                         do {
                             let decoder = JSONDecoder()
                             let user = try decoder.decode(User.self, from: data) // Assuming User is your user models
-                            self.role = user.role 
+                            self.role = user.role
                             print("User ID: \(user.id)")
                         } catch {
                             print("Error decoding user object: \(error)")
@@ -189,3 +191,4 @@ class LoginViewModel: ObservableObject {
     }
 
 }
+ 

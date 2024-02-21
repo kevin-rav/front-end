@@ -177,7 +177,7 @@ struct LoginView: View {
                     .padding()
                     
                     Button(action: {
-                        viewModel.registerUser { success in
+                        viewModel.registerUser() { success in
                             if success {
                                 showingRegisterPopup = false
                             } else {

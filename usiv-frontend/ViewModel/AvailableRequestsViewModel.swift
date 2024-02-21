@@ -13,33 +13,33 @@ class AvailableRequestsViewModel: ObservableObject {
     @Published var requests: [USIVRequest] = []
     
     private var timer: Timer?
-       // initialize variables
-       init(username: String, password: String) {
-           self.username = username
-           self.password = password
-           startAutomaticRefresh()
-       }
-       
-       deinit {
-           stopAutomaticRefresh()
-       }
-       
-       // Start automatic refresh
-       private func startAutomaticRefresh() {
-           // Invalidate existing timer if any
-           timer?.invalidate()
-           
-           // Create a new timer that fires every second
-           timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-               self?.fetchRequests()
-           }
-       }
-       
-       // Stop automatic refresh
-       private func stopAutomaticRefresh() {
-           timer?.invalidate()
-           timer = nil
-       }
+    // initialize variables
+    init(username: String, password: String) {
+        self.username = username
+        self.password = password
+        startAutomaticRefresh()
+    }
+    
+    deinit {
+        stopAutomaticRefresh()
+    }
+    
+    // Start automatic refresh
+    private func startAutomaticRefresh() {
+        // Invalidate existing timer if any
+        timer?.invalidate()
+        
+        // Create a new timer that fires every second
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.fetchRequests()
+        }
+    }
+    
+    // Stop automatic refresh
+    private func stopAutomaticRefresh() {
+        timer?.invalidate()
+        timer = nil
+    }
     
     // fetches all available requests
     func fetchRequests() {
